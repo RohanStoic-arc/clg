@@ -15,6 +15,8 @@ int main()
 {
     // 1.
     
+    
+    
     int n;
     scanf("%d",&n);
     int arr[n];
@@ -32,7 +34,7 @@ int main()
     
     // 2.
     
-    printf("\nreveresed array : ");
+    printf("\nreversed array : ");
     for(int i=n-1;i>=0;i--) printf("%d ",arr[i]);
     
     
@@ -85,18 +87,7 @@ int main()
     
     printf("\nsmallest element = %d",min1);
     
-    // second smallest
-    // for(int i=0;i<n;i++)
-    // {
-    //     if(min2>arr[i] && min2<min1)
-    //     {
-    //         min2=arr[i];
-    //     }
-        
-        
-    // }
     
-    // printf("\nsecond smallest element = %d",min2);
     
     // question 5
     
@@ -104,6 +95,8 @@ int main()
     for(int i=0;i<n;i++) sum+=arr[i];
     
     printf("\nsum = %d",sum);
+    
+    
     
     
     
@@ -138,6 +131,8 @@ int main()
     }
     
     
+    printf("\nsecond smallest elemtent = %d ",arr[1]);
+    
     
     //8
     
@@ -163,5 +158,9 @@ int main()
     
     
     //10
+    int pro=1;
+    for(int i=0;i<n;i++) pro*=arr[i];
+    
+    printf("\nproduct = %d",pro);
     return 0;
 }
