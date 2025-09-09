@@ -19,7 +19,7 @@ int main() {
         printf("Value x[%d]: ", i + 1);
         scanf("%lf", &x[i]);
         if (x[i] <= 0) {
-            printf("Values must be positive for geometric mean calculation.\n");
+            printf("Values must be positive for geometric and harmonic mean calculation.\n");
             return 1;
         }
         printf("Frequency f[%d]: ", i + 1);
@@ -29,30 +29,41 @@ int main() {
             return 1;
         }
     }
-
+    
     double sum_f = 0.0;
     double sum_f_logx = 0.0;
+    double sum_f_div_x = 0.0; // Corrected variable name
 
     printf("\n------------------------------------------------\n");
-    printf("|   x   |   f   |   log(x)   |  f * log(x)  |\n");
+    printf("|  x    |   f   |   log(x)  |  f * log(x) |\n");
     printf("------------------------------------------------\n");
 
     for (int i = 0; i < n; i++) {
         double log_x = log(x[i]);
         double f_log_x = freq[i] * log_x;
+        
         sum_f += freq[i];
         sum_f_logx += f_log_x;
+        sum_f_div_x += (double)freq[i] / x[i]; // Correct accumulation
+        
         printf("| %5.2lf | %5d | %10.4lf | %12.4lf |\n", x[i], freq[i], log_x, f_log_x);
     }
     printf("------------------------------------------------\n");
 
-    double geometric_mean;
     if (sum_f > 0) {
-        double weighted_avg_of_logs = sum_f_logx / n;
-        geometric_mean = exp(weighted_avg_of_logs);
-        printf("\nSum of frequencies (Σf) = %5.0lf\n", sum_f);
-        printf("Sum of f * log(x) (Σf*log(x)) = %5.4lf\n", sum_f_logx );
-        printf("Weighted Geometric Mean = exp(Σf*log(x) / Σf) = %lf\n", geometric_mean);
+        // Weighted Geometric Mean Calculation
+        double weighted_avg_of_logs = sum_f_logx / sum_f; // Corrected division
+        double geometric_mean = exp(weighted_avg_of_logs);
+        
+        printf("\nSum of frequencies (Σf) = %.0lf\n", sum_f);
+        printf("Sum of f * log(x) (Σf*log(x)) = %.4lf\n", sum_f_logx );
+        printf("Weighted Geometric Mean (exp(Σf*log(x) / Σf)) = %.4lf\n", geometric_mean);
+        
+        // Weighted Harmonic Mean Calculation
+        double harmonic_mean = sum_f / sum_f_div_x;
+        printf("\nSum of f/x (Σf/x) = %.4lf\n", sum_f_div_x);
+        printf("Weighted Harmonic Mean (Σf / Σf/x) = %.4lf\n", harmonic_mean);
+        
     } else {
         printf("\nError: The sum of frequencies is zero, which means there are no data points.\n");
         return 1;
