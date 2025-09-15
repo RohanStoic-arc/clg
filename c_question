@@ -1,0 +1,132 @@
+//wap that counts the no of boys whose weight is less than 50 and height is greater than 170
+#include<stdio.h>
+#include<conio.h>
+int main(){
+  int n,i;
+  int w[100] ,h[100];
+  clrscr();
+printf("Enter the number");
+scanf("%d",&n);
+int cnt=0;
+printf("enter the weight and height in cm");
+for( i=0;i<n;i++){
+  scanf("%d",&w[i]);
+  scanf("%d",&h[i]);
+  if(w[i] < 50 && h[i] > 170){
+    cnt++;
+}
+}
+printf("Count : %d",cnt);
+getch();
+return 0;
+}
+//wap that counts the no of boys & girls in a class 
+
+#include <stdio.h>
+#include <conio.h>
+
+int main() {
+    int n, i;
+    int code;
+    int boys = 0, girls = 0;
+
+    clrscr();
+
+    printf("Enter the number of students: ");
+    scanf("%d", &n);
+
+    printf("Enter code for each student (1=Boy, 2=Girl):\n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &code);
+        if (code == 1) {
+            boys++;
+        } else if (code == 2) {
+            girls++;
+        } else {
+            printf("Invalid code entered. Please enter 1 or 2.\n");
+            i--; // redo this iteration
+        }
+    }
+
+    printf("Number of Boys : %d\n", boys);
+    printf("Number of Girls: %d\n", girls);
+
+    getch();
+    return 0;
+}
+// a bank wants to give bonus to its deposit holders,5% to females with above rs 5000 balance and 2% to reset of all accounts 
+#include <stdio.h>
+#include <conio.h>
+
+int main() {
+    int n, i;
+    int gender;          // 1 = Male, 2 = Female
+    float balance, bonus;
+
+    clrscr();
+
+    printf("Enter the number of deposit holders: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        printf("\nEnter gender (1=Male, 2=Female): ");
+        scanf("%d", &gender);
+
+        printf("Enter account balance: ");
+        scanf("%f", &balance);
+
+        if (gender == 2 && balance > 5000) {
+            bonus = balance * 0.05;   // 5% bonus
+        } else {
+            bonus = balance * 0.02;   // 2% bonus
+        }
+
+        printf("Account %d -> Balance: %.2f, Bonus: %.2f, New Balance: %.2f\n",
+               i + 1, balance, bonus, balance + bonus);
+    }
+
+    getch();
+    return 0;
+}
+//4) wap to grade students in an institute, the grading is done acc to following rules.   
+  
+// 80-100 : honours   
+// 60-79 : 1st division   
+// 50-59 : 2nd division   
+// 40-49 : 3rd division   
+// 0-39 : fail.
+
+
+  #include <stdio.h>
+#include <conio.h>
+
+int main() {
+    int n, i, marks;
+
+    clrscr();
+
+    printf("Enter the number of students: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        printf("\nEnter marks of student %d (0–100): ", i + 1);
+        scanf("%d", &marks);
+
+        if (marks >= 80 && marks <= 100) {
+            printf("Student %d: Honours\n", i + 1);
+        } else if (marks >= 60 && marks <= 79) {
+            printf("Student %d: 1st Division\n", i + 1);
+        } else if (marks >= 50 && marks <= 59) {
+            printf("Student %d: 2nd Division\n", i + 1);
+        } else if (marks >= 40 && marks <= 49) {
+            printf("Student %d: 3rd Division\n", i + 1);
+        } else if (marks >= 0 && marks <= 39) {
+            printf("Student %d: Fail\n", i + 1);
+        } else {
+            printf("Invalid marks entered!\n");
+        }
+    }
+
+    getch();
+    return 0;
+}
